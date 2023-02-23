@@ -167,7 +167,9 @@ endif
 
 " Call this any time to reconfigure the environment. This re-performs the same
 "   initializations that the script does during the vim startup.
-command! -nargs=0 PPInitialize :call <SID>Initialize()
+
+" changed this to accept ? rather than 0 arguments; was possibly causing error
+command! -nargs=? PPInitialize :call <SID>Initialize()
 
 " Initialize {{{
 function! s:Initialize()
@@ -204,7 +206,8 @@ command! -nargs=? -complete=dir Pushd call PPPushd(<f-args>)
 command! -nargs=? -complete=dir Dirs call PPDirs(<f-args>)
 command! -nargs=? -complete=dir Popd call PPPopd(<f-args>)
 command! -nargs=* -complete=dir Cd call PPCd(<f-args>)
-command! -nargs=0 -complete=dir Cdp call PPCdp()
+" changed this to accept ? rather than 0 arguments; was possibly causing error
+command! -nargs=? -complete=dir Cdp call PPCdp()
 command! -nargs=? -complete=dir PPAddDir :call PPAddDir(0, <f-args>)
 command! -nargs=? PPAddPat :call PPAddDir(1, <f-args>)
 command! -nargs=? -complete=dir PPRemoveDir :call PPRemoveDir(0, <f-args>)
